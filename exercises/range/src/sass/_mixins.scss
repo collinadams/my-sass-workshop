@@ -1,3 +1,39 @@
 @mixin range-thumb() {
- 
+  box-shadow: $range_shadow;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  @content
+}
+
+@mixin webkit-moz-track() {
+    box-shadow: $range_shadow;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+@mixin ms-track() {
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+@mixin range-track() {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  @content
+}
+
+@mixin ms-fill($background) {
+  background: $background;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: $range_shadow;
 }
