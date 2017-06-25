@@ -1,0 +1,11 @@
+$directionsMap: ('top': 't', 'bottom': 'b', 'left': 'l', 'right': 'r');
+$propertyMap: ('padding': 'p', 'margin': 'm');
+@each $direction in $directionsMap {
+    @each $property in $propertyMap {
+        @for $number from 1 to 6 {
+            .#{map-get($propertyMap, nth($property, 1))}-#{map-get($directionsMap, nth($direction, 1))}-#{5 * $number} {
+                #{nth($property, 1)}-#{nth($direction, 1)}: #{5 * $number}px;
+            }
+        }
+    }
+}
