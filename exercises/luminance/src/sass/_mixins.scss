@@ -28,8 +28,22 @@
 }
 
 @function luminance($color) {
-  /* REPLACE THIS WITH YOUR REAL FUNCTION */
-  @return 0.5;
+  $r: convertGammaToLinear(red($color)/255);
+  $g: convertGammaToLinear(green($color)/255);
+  $b: convertGammaToLinear(blue($color)/255);
+  @return calcLinearTotal($r, $g, $b);
+}
+
+@function convertGammaToLinear($gammaColorVal) {
+  @if $gammaColorVal > 0.04045 {
+    @return pow((($gammaColorVal + 0.055) / 1.055), 2.4);
+  } @else {
+    @return $gammaColorVal / 12.92;
+  }
+}
+
+@function calcLinearTotal($r, $g, $b) {
+  @return ($r * 0.2126) + ($g * 0.7152) + ($b * 0.0722);
 }
 
 $white_luminance: luminance(white);
